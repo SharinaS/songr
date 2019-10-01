@@ -24,4 +24,19 @@ public class HomeController {
         m.addAttribute("word", word.toUpperCase());
         return "capitalize";
     }
+
+    @GetMapping("/albums")
+    public String getAlbums(Model m) {
+        Album[] allAlbums = new Album[] {
+                new Album (
+                        "Sigh No More",
+                        "Mumford and Sons",
+                        12,
+                        2913,
+                        "https://en.wikipedia.org/wiki/Sigh_No_More_(Mumford_%26_Sons_album)#/media/File:Mumfordsonssighnomore.jpg"
+                        )
+        };
+        m.addAttribute("allAlbums", allAlbums);
+        return "albums";
+    }
 }
