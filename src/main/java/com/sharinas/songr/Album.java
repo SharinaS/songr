@@ -1,11 +1,11 @@
 package com.sharinas.songr;
 
 public class Album {
-    String title;
-    String artist;
-    int songCount;
-    int lengthInSec;
-    String imageUrl;
+    protected String title;
+    protected String artist;
+    protected int songCount;
+    protected int lengthInSec;
+    protected String imageUrl;
 
     public Album (String title, String artist, int songCount, int lengthInSec, String imageUrl) {
         this.title = title;
@@ -16,7 +16,11 @@ public class Album {
     }
 
     public String toString() {
-        return String.format("%s by %s has %s songs. The album is %s seconds long. %s", this.title, this.artist, this.songCount, this.lengthInSec, this.imageUrl);
+        return String.format("The album %s is by %s. The album has %s songs and is %s seconds long. %s", this.title, this.artist, this.songCount, this.lengthInSec, this.imageUrl);
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
     }
 
 }

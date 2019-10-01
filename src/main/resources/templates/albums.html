@@ -8,7 +8,7 @@
 <body>
     <div>
         <ul>
-            <li th:each="album : ${allAlbums}" th:text="${album}">
+            <li th:each="album : ${allAlbums}"><span th:text="${album}"> </span> <img th:src="${album.imageUrl}">
             </li>
         </ul>
     </div>
