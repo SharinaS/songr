@@ -20,13 +20,15 @@ public class Album {
                 this.title, this.artist, this.songCount, this.lengthInSec);
     }
 
+    // getter
     public String getImageUrl() {
         return this.imageUrl;
     }
 
-     // setter
+     // setter - gives people access to change something
     public void setTitle (String title) {
         this.title = title;
     }
+
 
 }
