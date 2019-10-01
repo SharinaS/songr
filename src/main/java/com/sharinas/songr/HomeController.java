@@ -33,8 +33,22 @@ public class HomeController {
                         "Mumford and Sons",
                         12,
                         2913,
-                        "https://en.wikipedia.org/wiki/Sigh_No_More_(Mumford_%26_Sons_album)#/media/File:Mumfordsonssighnomore.jpg"
-                        )
+                        "https://upload.wikimedia.org/wikipedia/en/f/f3/Mumfordsonssighnomore.jpg"
+                        ),
+                new Album (
+                        "The Princess",
+                        "Parov Stellar",
+                        16,
+                        2913,
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Parov_Stelar_2017.jpg/800px-Parov_Stelar_2017.jpg"
+                ),
+                new Album (
+                        "Fire Within",
+                        "Birdy",
+                        11,
+                        2623,
+                        "https://upload.wikimedia.org/wikipedia/en/a/a3/Birdy_-_Fire_Within.png"
+                )
         };
         m.addAttribute("allAlbums", allAlbums);
         return "albums";
