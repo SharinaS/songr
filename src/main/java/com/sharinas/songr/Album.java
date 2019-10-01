@@ -16,7 +16,7 @@ public class Album {
     }
 
     public String toString() {
-        return String.format("The album %s is by %s. The album has %s songs and is %s seconds long. %s", this.title, this.artist, this.songCount, this.lengthInSec, this.imageUrl);
+        return String.format("The album %s is by %s. The album has %s songs and is %s seconds long.", this.title, this.artist, this.songCount, this.lengthInSec);
     }
 
     public String getImageUrl() {

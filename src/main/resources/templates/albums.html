@@ -6,9 +6,12 @@
     <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>Albums</h1>
     <div>
         <ul>
-            <li th:each="album : ${allAlbums}"><span th:text="${album}"> </span> <img th:src="${album.imageUrl}">
+            <li th:each="album : ${allAlbums}">
+                <span th:text="${album}"></span>
+                <img th:src="${album.imageUrl}" class="image">
             </li>
         </ul>
     </div>
