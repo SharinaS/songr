@@ -6,6 +6,13 @@ A basic webapp that has
 * an Album class
 * an albums page
 
+## Songr uses:
+* Java
+* PostGreSQL
+* HTML
+* Bootstrap
+* CSS
+
 ## Contributor
 Sharina Stubbs
 
@@ -14,4 +21,12 @@ Sharina Stubbs
 2. Run `.gradlew bootrun`
 3. Go to localhost:8080 to see the splash page
 4. Go to localhost:8080/capitalize/your-word-or-sentence-here to change your word or sentence to uppercase.
-5. Go to localhost:8080/albums to see three albums and their data
+5. Go to localhost:8080/albums to see a collection of musical albums. Add in your favorite albums.
+
+## Database is called 'albums.' It has a table called 'album.' It appears like so in PostGreSQL. 
+```
+ id | artist | image_url | length_in_sec | song_count | title 
+----+--------+-----------+---------------+------------+-------
+```
+
+
