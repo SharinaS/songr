@@ -1,4 +1,4 @@
-package com.sharinas.songr;
+package com.sharinas.songr.models;
 
 import org.junit.Test;
 

@@ -1,11 +1,23 @@
-package com.sharinas.songr;
+package com.sharinas.songr.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     protected String title;
     protected String artist;
     protected int songCount;
     protected int lengthInSec;
     protected String imageUrl;
+
+    public Album() {}
 
     public Album (String title, String artist, int songCount, int lengthInSec, String imageUrl) {
         this.title = title;
