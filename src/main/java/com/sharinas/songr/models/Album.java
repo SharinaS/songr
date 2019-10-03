@@ -1,24 +1,32 @@
 package com.sharinas.songr.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    public long id;
+
+    // annotate that this is a relationship
+    // Choose one to many b/c: this(contextual this) and then to that
+    // the string specifies the instance variable of the other class
+    @OneToMany(mappedBy = "album")
+    List<Song> songs;
+
     protected String title;
     protected String artist;
     protected int songCount;
     protected int lengthInSec;
     protected String imageUrl;
 
+
+    // basic constructor
     public Album() {}
 
+    // constructor
     public Album (String title, String artist, int songCount, int lengthInSec, String imageUrl) {
         this.title = title;
         this.artist = artist;
@@ -42,5 +50,27 @@ public class Album {
         this.title = title;
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getSongCount() {
+        return songCount;
+    }
+
+    public int getLengthInSec() {
+        return lengthInSec;
+    }
 }
