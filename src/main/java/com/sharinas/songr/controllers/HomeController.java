@@ -54,6 +54,7 @@ public class HomeController {
         return new RedirectView("/albums");
     }
 
+    // view songs
     @GetMapping("/albums/{id}")
     public String getDetailView (@PathVariable long id, Model m) {
         m.addAttribute("album", albumRepository.getOne(id));
@@ -73,7 +74,7 @@ public class HomeController {
 
 
 
-//    @PostMapping("/albums/delete") <---------- return to frontRow 10/2/19 Code Review for deleting
+//    @PostMapping("/albums/delete") <---------- return to demo code from Oct 2
 //    public RedirectView deleteAlbum
 }
 
