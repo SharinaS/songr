@@ -1,10 +1,13 @@
 # Songr Demo Project with Albums
+This app allows a user to view a collection of albums. When you choose to view the details of each album, the user can then view and add songs into the database.
+
 A basic webapp that has
 * a splash page
 * a hello route
 * a capitalize route
 * an Album class
 * an albums page
+* A details page
 
 ## Songr uses:
 * Java

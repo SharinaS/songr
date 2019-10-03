@@ -8,22 +8,29 @@
 </head>
 <body>
     <h1>Albums</h1>
-    <div>
+    <div id="album-group">
         <ul>
             <li th:each="album : ${allAlbums}">
                 <span th:text="${album}"></span>
                 <img th:src="${album.imageUrl}" class="image">
+                <a th:href = "${'/albums/' + album.id}">Details</a>
+<!--                <form method="POST" th:action="/albums/${album.id}">-->
+<!--                    <input type="hidden" th:value="${album.id}" name="id">-->
+<!--                    <button>See More</button>-->
+<!--                </form>-->
             </li>
         </ul>
-        <form action="/albums" method="POST">
-            <input type="text" name="albumTitle">Title
-            <input type="text" name="albumArtist">Artist
-            <input type="number" name="songCount">Song Count
-            <input type="number" name="lengthInSec">Album Length (sec)
-            <input type="text" name="imageUrl">Image URL
-            <input type="submit" value="Add Album">
-
-        </form>
+        <div class="add-details">
+            <h2>Add an Album</h2>
+            <form action="/albums" method="POST">
+                <input type="text" name="albumTitle">Title
+                <input type="text" name="albumArtist">Artist
+                <input type="number" name="songCount">Song Count
+                <input type="number" name="lengthInSec">Album Length (sec)
+                <input type="text" name="imageUrl">Image URL
+                <input type="submit" value="Add Album">
+            </form>
+        </div>
     </div>
 </body>
 </html>
