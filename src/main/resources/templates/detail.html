@@ -15,8 +15,10 @@
     </div>
     <div id="song-list">
         <ul>
-            <li th:each="song : ${songs}">
+            <li th:each="song : ${album.songs}">
                 <span th:text="${song.title}"></span>
+<!--                <span th:text="${song.songLength"></span>-->
+<!--                <span th:text="${song.trackNumber"></span>-->
             </li>
         </ul>
     </div>
@@ -24,7 +26,8 @@
     <div class="add-details">
         <div id="add-album">
             <h2>Add Songs to the Album</h2>
-            <form th:action="'/albums/' + ${album.id}" method="POST">
+<!--            <form th:action="'/albums/' + ${album.id}" method="POST">-->
+                <form method="POST">
                 <input type="text" name="title">Title
                 <input type="number" name="songLength">Song Length
                 <input type="number" name="trackNumber">Track Number
