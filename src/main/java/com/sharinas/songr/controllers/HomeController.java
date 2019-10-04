@@ -57,19 +57,25 @@ public class HomeController {
     // view songs
     @GetMapping("/albums/{id}")
     public String getDetailView (@PathVariable long id, Model m) {
-        m.addAttribute("album", albumRepository.getOne(id));
         List<Song> songs = songRepository.findAll();
+        m.addAttribute("album", albumRepository.getOne(id));
         m.addAttribute("songs", songs);
         return "detail";
     }
 
     // save a song
+    // take in the data about a new song, including the ID of the album it belongs to
     @PostMapping("/albums/{id}")
-    public RedirectView addSongs(String title, int songLength, int trackNumber, @PathVariable long id) {
+    public RedirectView addSongs(@PathVariable long id, String title, int songLength, int trackNumber) {
+        // find the album in the db
         Album album = albumRepository.getOne(id);
+        // create the new song & connect the song and the album. sng gives the data to the song constructor.
         Song sng = new Song(album, title, songLength, trackNumber);
+        // save the song
         songRepository.save(sng);
-        return new RedirectView("/albums/{id}");
+        // redirect to somewhere that we can see the song
+        //return new RedirectView("/albums/{id}");
+        return new RedirectView("/albums/" + id);
     }
 
 
