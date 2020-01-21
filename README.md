@@ -26,10 +26,21 @@ Sharina Stubbs
 4. Go to localhost:8080/capitalize/your-word-or-sentence-here to change your word or sentence to uppercase.
 5. Go to localhost:8080/albums to see a collection of musical albums. Add in your favorite albums.
 
-## Database is called 'albums.' It has a table called 'album.' It appears like so in PostGreSQL. 
+# Database
+## About the Database
+A PostGreSQL database is used in Songr. 
+
+The database is called 'albums.' It has a table called 'album.' Once you create the database, it appears like so in PostGreSQL. 
 ```
  id | artist | image_url | length_in_sec | song_count | title 
 ----+--------+-----------+---------------+------------+-------
 ```
 
-
+### CheatSheet for working with the database from the command line
+1. Navigate to the local repo
+2. type `psql` to connect to PostGreSQL
+3. Connect to the database with `\c albums;`
+4. Check the tables within the database with `\dt`
+5. See the contents of a table with `select * from album;`
+6. Type `q` to get out of seeing table contents
+7. Delete a row from a table with `DELETE FROM album WHERE artist='John Smith';`
