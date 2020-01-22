@@ -15,6 +15,7 @@ public class Song {
     int songLength;
     int trackNumber;
 
+    //default constructor
     public Song() {}
 
     public Song(Album album, String title, int songLength, int trackNumber) {

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nav Fragment</title>
+</head>
+<body>
+    <section th:fragment="nav">
+        <nav id="nav" class="navbar navbar-dark">
+            <a class="navbar-brand" href="/"></a>
+            <span th:if="${name}" class="navbar-text" id="nav-span" >
+                    Hello, [[${name}]]! <a href="/logout">Logout</a>
+                </span>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>

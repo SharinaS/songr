@@ -16,6 +16,10 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+    // == Spring will create the class that implements the interface, that we can then use, behind the scenes.
+    // The annotation Autowired magically wires the repo with the database.
+
     @Autowired // fill in the instance variable for me
     AlbumRepository albumRepository;
 
@@ -78,10 +82,15 @@ public class HomeController {
         return new RedirectView("/albums/" + id);
     }
 
+//TODO: Add in Bootstrap
+//TODO: Add in fragments
+//TODO: Add in Nav bar
+//TODO: Add in a way to delete an album
 
-
-//    @PostMapping("/albums/delete") <---------- return to demo code from Oct 2
+//    @PostMapping("/albums/delete") <---------- return to demo code from Oct 2, Code Fellows 401-d6
 //    public RedirectView deleteAlbum
+
+
 }
 
 
