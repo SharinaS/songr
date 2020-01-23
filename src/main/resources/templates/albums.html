@@ -9,16 +9,22 @@
     <h1>Albums</h1>
     <div id="album-group">
         <ul>
-            <li th:each="album : ${allAlbums}">
+            <!-- view albums -->
+            <li th:each="album : ${allAlbums}" th:class="${album.title}">
+                <!-- album title and image, and link to details page -->
                 <span th:text="${album}"></span>
                 <img th:src="${album.imageUrl}" class="image">
                 <a th:href = "${'/albums/' + album.id}">Details</a>
-<!--                <form method="POST" th:action="/albums/${album.id}">-->
-<!--                    <input type="hidden" th:value="${album.id}" name="id">-->
-<!--                    <button>See More</button>-->
-<!--                </form>-->
+
+               <!-- delete button for each album -->
+                <form method="POST" action="/albums/delete">
+                    <input type="hidden" th:value="${album.id}" name="id">
+                    <input type="submit" value="delete-album">
+<!--                    <button>Delete Album</button>-->
+                </form>
             </li>
         </ul>
+        <!-- add album -->
         <div class="add-details">
             <h2>Add an Album</h2>
             <form action="/albums" method="POST">
