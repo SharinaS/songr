@@ -58,12 +58,12 @@ public class HomeController {
         return new RedirectView("/albums");
     }
 
-    // view songs
+    // view detail page for each album
     @GetMapping("/albums/{id}")
     public String getDetailView (@PathVariable long id, Model m) {
-        //List<Song> songs = songRepository.findAll();
+        // note that attributeName "album", the key, has to match the template (so, it matches the object
+        // - ie album.title)
         m.addAttribute("album", albumRepository.getOne(id));
-        //m.addAttribute("songs", songs);
         return "detail";
     }
 
@@ -77,20 +77,24 @@ public class HomeController {
         Song sng = new Song(album, title, songLength, trackNumber);
         // save the song
         songRepository.save(sng);
-        // redirect to somewhere that we can see the song
-        //return new RedirectView("/albums/{id}");
         return new RedirectView("/albums/" + id);
+    }
+
+    @PostMapping("/albums/delete")
+    public RedirectView deleteAlbum (Long id) {
+        System.out.println("*************************************");
+        System.out.println("made it to deleteAlbum method" + id);
+
+        albumRepository.deleteById(id);
+        //TODO: ERROR: update or delete on table "album" violates foreign key constraint "fkrcjmk41yqj3pl3iyii40niab0" on table "song"
+        //  Detail: Key (id)=(1) is still referenced from table "song".
+
+        return new RedirectView("/albums");
     }
 
 //TODO: Add in Bootstrap
 //TODO: Add in fragments
 //TODO: Add in Nav bar
-//TODO: Add in a way to delete an album
-
-//    @PostMapping("/albums/delete") <---------- return to demo code from Oct 2, Code Fellows 401-d6
-//    public RedirectView deleteAlbum
-
-
 }
 
 
