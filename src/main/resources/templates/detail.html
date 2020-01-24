@@ -16,8 +16,13 @@
         <ul>
             <li th:each="song : ${album.songs}">
                 <span th:text="${song.title}"></span>
-<!--                <span th:text="${song.songLength"></span>-->
-<!--                <span th:text="${song.trackNumber"></span>-->
+                <!-- delete song -->
+                <form method="POST" action="/song/delete">
+                    <input type="hidden" th:value="${song.id}" name="songId">
+                    <input type="hidden" th:value="${album.id}" name="albumId">
+                    <input type="submit" value="Delete Song">
+                </form>
+
             </li>
         </ul>
     </div>
