@@ -36,7 +36,7 @@ public class Album {
     }
 
     public String toString() {
-        return String.format("The album %s is by %s. The album has %s songs and is %s seconds long.",
+        return String.format("Album: %s, Artist: %s, Song Number: %s, Song Length: %s",
                 this.title, this.artist, this.songCount, this.lengthInSec);
     }
 

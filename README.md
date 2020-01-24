@@ -1,13 +1,24 @@
 # Songr Demo Project with Albums
-This app allows a user to view a collection of albums. When you choose to view the details of each album, the user can then view and add songs into the database.
+An interactive app built with REST architecture. It allows a user to view and edit a collection of albums. The details of each album can be viewed and edited, so songs can be added to and removed from the database.
 
-A basic webapp that has
+Routes
 * a splash page
+```$xslt
+localhost:8080/
+```
 * a hello route
-* a capitalize route
-* an Album class
-* an albums page
-* A details page
+```$xslt
+localhost:8080/hello
+```
+* a capitalize route that allows the user to add a word into the url, for it to then be capitalized
+```
+localhost:8080/capitalize/word-to-be-capitalized
+```
+* An albums page that shows all the albums in the collection
+```
+localhost:8080/albums
+```
+* A details page that shows all the songs associated with each album
 
 ## Songr uses:
 * Java

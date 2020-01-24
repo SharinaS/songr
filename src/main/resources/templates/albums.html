@@ -15,12 +15,10 @@
                 <span th:text="${album}"></span>
                 <img th:src="${album.imageUrl}" class="image">
                 <a th:href = "${'/albums/' + album.id}">Details</a>
-
                <!-- delete button for each album -->
                 <form method="POST" action="/albums/delete">
                     <input type="hidden" th:value="${album.id}" name="albumId">
                     <input type="submit" value="Delete Album">
-<!--                    <button>Delete Album</button>-->
                 </form>
             </li>
         </ul>
