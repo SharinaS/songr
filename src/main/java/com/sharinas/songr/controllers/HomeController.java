@@ -71,18 +71,28 @@ public class HomeController {
     @PostMapping("/albums/{id}")
     public RedirectView addSongs(@PathVariable long id, String title, int songLength, int trackNumber) {
         // find the album in the db
-        Album album = albumRepository.getOne(id);
+        Album albumId = albumRepository.getOne(id);
         // create the new song & connect the song and the album. newSong gives the data to the song constructor.
-        Song newSong = new Song(album, title, songLength, trackNumber);
+        Song newSong = new Song(albumId, title, songLength, trackNumber);
         songRepository.save(newSong);
         return new RedirectView("/albums/" + id);
     }
 
     @PostMapping("/albums/delete")
-    public RedirectView deleteAlbum (Long id) {
-        albumRepository.deleteById(id);
-        //TODO: ERROR: update or delete on table "album" violates foreign key constraint "fkrcjmk41yqj3pl3iyii40niab0" on table "song"
-        //  Detail: Key (id)=(1) is still referenced from table "song".
+    public RedirectView deleteAlbum (Long albumId) {
+        // this one album has many songs.
+        Album thisAlbum = albumRepository.getOne(albumId);
+        List<Song> songsInThisAlbum = thisAlbum.getSongs();
+        // check the list of songs for each album. if list not empty, delete the songs from the song repo by songAlbumId.
+        if(!songsInThisAlbum.isEmpty()){
+            System.out.println("!!!!!!!!!!!!!!!!!!!! Album has songs !!!!!!!!!!!!!!!!!!!!!");
+            for (Song song : songsInThisAlbum) {
+                Long songId = song.getId();
+                songRepository.deleteById(songId);
+            }
+        }
+        // deletes album if there are no songs in the album
+        albumRepository.deleteById(albumId);
         return new RedirectView("/albums");
     }
 
