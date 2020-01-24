@@ -54,7 +54,6 @@ public class HomeController {
     public RedirectView addAlbums(String albumTitle, String albumArtist, int songCount, int lengthInSec, String imageUrl) {
         Album alb = new Album(albumTitle, albumArtist, songCount, lengthInSec, imageUrl);
         albumRepository.save(alb);
-
         return new RedirectView("/albums");
     }
 
@@ -73,26 +72,26 @@ public class HomeController {
     public RedirectView addSongs(@PathVariable long id, String title, int songLength, int trackNumber) {
         // find the album in the db
         Album album = albumRepository.getOne(id);
-        // create the new song & connect the song and the album. sng gives the data to the song constructor.
-        Song sng = new Song(album, title, songLength, trackNumber);
-        // save the song
-        songRepository.save(sng);
+        // create the new song & connect the song and the album. newSong gives the data to the song constructor.
+        Song newSong = new Song(album, title, songLength, trackNumber);
+        songRepository.save(newSong);
         return new RedirectView("/albums/" + id);
     }
 
     @PostMapping("/albums/delete")
     public RedirectView deleteAlbum (Long id) {
-        System.out.println("*************************************");
-        System.out.println("made it to deleteAlbum method" + id);
-
         albumRepository.deleteById(id);
         //TODO: ERROR: update or delete on table "album" violates foreign key constraint "fkrcjmk41yqj3pl3iyii40niab0" on table "song"
         //  Detail: Key (id)=(1) is still referenced from table "song".
-
         return new RedirectView("/albums");
     }
 
-//TODO: Add in Bootstrap
+    @PostMapping("/song/delete")
+    public RedirectView deleteSongFromAlbum (Long songId, Long albumId) {
+        songRepository.deleteById(songId);
+        return new RedirectView("/albums/" + albumId);
+    }
+
 //TODO: Add in fragments
 //TODO: Add in Nav bar
 }
