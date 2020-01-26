@@ -22,7 +22,7 @@ localhost:8080/albums
 
 ## Songr uses:
 * Java
-* PostGreSQL
+* PostgreSQL
 * HTML
 * Bootstrap
 * CSS
