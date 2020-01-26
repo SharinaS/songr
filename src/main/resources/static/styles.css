@@ -1,12 +1,17 @@
-* {
+ /*
+ * {
     background-color: lightblue;
+}
+*/
+
+.page-title {
+    margin: 1em, 0em, 1.5em, 0em;
 }
 
 .image {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 12%;
 }
 
-/* Bootstrap:
-Put a cdn link to HTML top of page for bootstrap
-*/

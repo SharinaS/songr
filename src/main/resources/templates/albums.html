@@ -6,34 +6,53 @@
     <title>Albums</title>
 </head>
 <body>
-    <h1>Albums</h1>
-    <div id="album-group">
-        <ul>
-            <!-- view albums -->
-            <li th:each="album : ${allAlbums}" th:class="${album.title}">
-                <!-- album title and image, and link to details page -->
-                <span th:text="${album}"></span>
-                <img th:src="${album.imageUrl}" class="image">
-                <a th:href = "${'/albums/' + album.id}">Details</a>
-               <!-- delete button for each album -->
-                <form method="POST" action="/albums/delete">
-                    <input type="hidden" th:value="${album.id}" name="albumId">
-                    <input type="submit" value="Delete Album">
-                </form>
-            </li>
-        </ul>
-        <!-- add album -->
-        <div class="add-details">
-            <h2>Add an Album</h2>
-            <form action="/albums" method="POST">
-                <input type="text" name="albumTitle">Title
-                <input type="text" name="albumArtist">Artist
-                <input type="number" name="songCount">Song Count
-                <input type="number" name="lengthInSec">Album Length (sec)
-                <input type="text" name="imageUrl">Image URL
-                <input type="submit" value="Add Album">
-            </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h1 class="page-title">Albums</h1>
+                <div class="row">
+                    <div id="album-group" th:each="album : ${allAlbums}">
+                        <div class="about-the-album">
+                            <h2 th:text="${album.artist}"></h2>
+                            <a th:href = "${'/albums/' + album.id}"><img th:src="${album.imageUrl}" class="image"></a>
+                            <h3 th:text="${album.title}"></h3>
+<!--                            <a th:href = "${'/albums/' + album.id}">See the Songs</a>-->
+                            <form method="POST" action="/albums/delete">
+                                <input type="hidden" th:value="${album.id}" name="albumId">
+                                <input type="submit" value="Delete Album">
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- end of row 1-->
+            </div>
+        <!-- add a new album -->
+            <div class="col">
+                <h2 class="page-title">Add an Album</h2>
+                    <form action="/albums" method="POST">
+                        <div class="form-group">
+                            <label for="input-album-title">Title of Album</label>
+                            <input type="text" class="form-control" placeholder="Enter Album Title" name="albumTitle" id="input-album-title">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-artist-name">Artist</label>
+                            <input type="text" class="form-control" placeholder="Enter Artist Name" name="albumArtist", id="input-artist-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-image-url">URL for Album Image</label>
+                            <input type="text" class="form-control" placeholder="Enter URL to image" name="imageUrl" id="input-image-url">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-song-count">Number of Songs</label>
+                            <input type="number" class="form-control" name="songCount" id="input-song-count">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-album-length">Length of Album (sec)</label>
+                            <input type="number" class="form-control" name="lengthInSec" id="input-album-length">
+                        </div>
+                        <input type="submit" value="Add Album">
+                    </form>
+            </div>
         </div>
-    </div>
+    </div> <!-- end of container-->
 </body>
 </html>

@@ -7,36 +7,37 @@
 
 </head>
 <body>
+    <div class="container">
+        <div id="album-detail">
+            <h2 th:text="${album.title}"></h2>
+            <img th:src="${album.imageUrl}">
+        </div>
+        <div id="song-list">
+            <ul>
+                <li th:each="song : ${album.songs}">
+                    <span th:text="${song.title}"></span>
+                    <!-- delete song -->
+                    <form method="POST" action="/song/delete">
+                        <input type="hidden" th:value="${song.id}" name="songId">
+                        <input type="hidden" th:value="${album.id}" name="albumId">
+                        <input type="submit" value="Delete Song">
+                    </form>
 
-    <div id="album-detail">
-        <h2 th:text="${album.title}"></h2>
-        <img th:src="${album.imageUrl}">
-    </div>
-    <div id="song-list">
-        <ul>
-            <li th:each="song : ${album.songs}">
-                <span th:text="${song.title}"></span>
-                <!-- delete song -->
-                <form method="POST" action="/song/delete">
-                    <input type="hidden" th:value="${song.id}" name="songId">
-                    <input type="hidden" th:value="${album.id}" name="albumId">
-                    <input type="submit" value="Delete Song">
+                </li>
+            </ul>
+        </div>
+
+        <div class="add-details">
+            <div id="add-album">
+                <h2>Add Songs to the Album</h2>
+    <!--            <form th:action="'/albums/' + ${album.id}" method="POST">-->
+                    <form method="POST">
+                    <input type="text" name="title">Title
+                    <input type="number" name="songLength">Song Length
+                    <input type="number" name="trackNumber">Track Number
+                    <input type="submit" value="Add Song">
                 </form>
-
-            </li>
-        </ul>
-    </div>
-
-    <div class="add-details">
-        <div id="add-album">
-            <h2>Add Songs to the Album</h2>
-<!--            <form th:action="'/albums/' + ${album.id}" method="POST">-->
-                <form method="POST">
-                <input type="text" name="title">Title
-                <input type="number" name="songLength">Song Length
-                <input type="number" name="trackNumber">Track Number
-                <input type="submit" value="Add Song">
-            </form>
+            </div>
         </div>
     </div>
 </body>
